@@ -17,6 +17,10 @@ module.exports = {
     [
       require.resolve('@babel/plugin-proposal-class-properties'),
       {loose: true}
+    ],
+    [
+      require.resolve('@babel/plugin-proposal-optional-chaining'),
+      {loose: true}
     ]
   ]
  }
