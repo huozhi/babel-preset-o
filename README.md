@@ -1,6 +1,7 @@
 # babel-preset-o
 > tiny and flexible babel preset
 
+cover basic usage for react development
 ### Usage
 
 ```sh
