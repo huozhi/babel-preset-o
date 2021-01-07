@@ -12,7 +12,7 @@ module.exports = () => {
           loose: true,
           useBuiltIns: isDev && 'usage',
           targets: {
-            node: "4",
+            node: 'current',
             esmodules: true,
           },
         },
