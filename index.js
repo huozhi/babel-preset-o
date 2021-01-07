@@ -1,12 +1,16 @@
+const path = require('path')
+
+const isDev = process.env.NODE_ENV === 'development'
+
 module.exports = () => {
   return {
     presets: [
-      require.resolve("@babel/preset-react"),
+      require("@babel/preset-react").default,
       [
-        require.resolve("@babel/preset-env"),
+        require("@babel/preset-env").default,
         {
           loose: true,
-          useBuiltIns: false,
+          useBuiltIns: isDev && 'usage',
           targets: {
             node: "4",
             esmodules: true,
@@ -16,13 +20,23 @@ module.exports = () => {
     ],
     plugins: [
       [
-        require.resolve("@babel/plugin-proposal-class-properties"),
+        require("@babel/plugin-proposal-class-properties").default,
         { loose: true },
       ],
       [
-        require.resolve("@babel/plugin-proposal-optional-chaining"),
+        require("@babel/plugin-proposal-optional-chaining").default,
         { loose: true },
       ],
+      [
+        require('@babel/plugin-transform-runtime').default,
+        {
+          regenerator: true,
+          version: require('@babel/runtime/package.json').version,
+          absoluteRuntime: path.dirname(
+            require.resolve('@babel/runtime/package.json')
+          ),
+        }
+      ]
     ],
   };
 };
