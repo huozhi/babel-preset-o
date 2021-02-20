@@ -5,7 +5,7 @@ cover basic usage for react development
 ## Usage
 
 ```sh
-npm i -S babel-preset-o
+npm i -D babel-preset-o
 ```
 
 babel.config.js
