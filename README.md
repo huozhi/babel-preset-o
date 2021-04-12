@@ -17,9 +17,9 @@ module.exports = {
 
 ## Options
 Use this preset with customized options to extend flexibility of compilation.
-#### `nodeVersion`
+#### `targets`
 
-Default is `undefined`, will use browserslist if project specified. Ref to [babel-preset-env#targetsnode](https://babeljs.io/docs/en/babel-preset-env#targetsnode)
+Default is `undefined`. Ref to [babel-preset-env#targets](https://babeljs.io/docs/en/babel-preset-env#targets)
 #### `modules`
 
 Default is `false`, ref to [babel-preset-env#modules](https://babeljs.io/docs/en/babel-preset-env#modules)
@@ -36,7 +36,7 @@ Default is `'classic'`, Ref to [babel-preset-react#runtime](https://babeljs.io/d
 // babel.config.js
 module.exports = {
   presets: [
-    ['babel-preset-o', { modules: 'commonjs', nodeVersion: '8' }]
+    ['babel-preset-o', { modules: 'commonjs' }]
   ]  
 }
 ```

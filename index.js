@@ -1,24 +1,18 @@
 const path = require('path')
 
 module.exports = (api, options = {}) => {
-  const nodeEnv = process.env.NODE_ENV
-  const isTest = nodeEnv === 'test'
-  const isDev = nodeEnv === 'development'
-  const isProd = nodeEnv === 'production'
-
+  const {
+    modules = false,
+    useBuiltIns = false,
+    runtime = 'classic',
+    targets,
+  } = options
   let absoluteRuntime = null
   try {
     absoluteRuntime = path.dirname(
       require.resolve('@babel/runtime/package.json')
     )
   } catch (_) {}
-
-  const {
-    modules = false,
-    useBuiltIns = false,
-    runtime = 'classic',
-    nodeVersion,
-  } = options
 
   return {
     presets: [
@@ -29,24 +23,13 @@ module.exports = (api, options = {}) => {
           runtime,
         }
       ],
-      isTest && [
-        require('@babel/preset-env').default,
-        {
-          targets: { node: 'current' }
-        }
-      ],
-      isProd && [
+      [
         require('@babel/preset-env').default,
         {
           loose: true,
-          corejs: useBuiltIns ? 3 : false,
           modules,
           useBuiltIns,
-          // when node version is specified, use nodeVersion first,
-          // otherwise let browserslist works
-          ...(nodeVersion ? {
-            targets: { node: nodeVersion }
-          } : {}),
+          ...(targets && { targets }),
           exclude: ['@babel/plugin-transform-typeof-symbol'],
         },
       ],
