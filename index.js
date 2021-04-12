@@ -7,12 +7,6 @@ module.exports = (api, options = {}) => {
     runtime = 'classic',
     targets,
   } = options
-  let absoluteRuntime = null
-  try {
-    absoluteRuntime = path.dirname(
-      require.resolve('@babel/runtime/package.json')
-    )
-  } catch (_) {}
 
   return {
     presets: [
@@ -38,17 +32,6 @@ module.exports = (api, options = {}) => {
       [
         require('@babel/plugin-proposal-class-properties').default,
         { loose: true },
-      ],
-      isDev && [
-        require('@babel/plugin-transform-runtime').default,
-        {
-          corejs: false,
-          helpers: isDev,
-          regenerator: true,
-          useESModules: false,
-          version: require('@babel/runtime/package.json').version,
-          absoluteRuntime,
-        }
       ],
       [
         require('@babel/plugin-proposal-optional-chaining').default,
