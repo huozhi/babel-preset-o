@@ -32,11 +32,26 @@ Default is `'classic'`, Ref to [babel-preset-react#runtime](https://babeljs.io/d
 
 ### Example
 
+transform code to commonjs
+
+
 ```js
 // babel.config.js
 module.exports = {
   presets: [
     ['babel-preset-o', { modules: 'commonjs' }]
+  ]  
+}
+```
+
+
+transform all code to es5
+
+```js
+// babel.config.js
+module.exports = {
+  presets: [
+    ['babel-preset-o', { targets: {} }]
   ]  
 }
 ```
