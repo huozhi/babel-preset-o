@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-o",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "tiny and flexible babel preset",
   "main": "index.js",
   "repository": "git@github.com:huozhi/babel-preset-o.git",
